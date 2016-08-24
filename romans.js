@@ -19,6 +19,10 @@ var RomanNumber = function(i) {
 	var legal = "MDCXLXVI";
 	this.state = i;
 
+	// check if the user put new or not
+	if (!this.toRoman) {
+		return new RomanNumber(i);
+	}
 
 	if (typeof(this.state) === "string") {
 		this.state = this.state.toUpperCase();
