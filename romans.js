@@ -4,9 +4,13 @@ var fromRoman = function(anumber) {
 	var reply = "";
 	anumber = parseInt(anumber);
 
+	while (anumber >= 5) {
+		reply += "V";
+		anumber -= 5;
+	}
 	while (anumber >= 1) {
 		reply += "I";
-		anumber--;
+		anumber -= 1;
 	}
 
 	return reply;
