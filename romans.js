@@ -33,6 +33,9 @@ var RomanNumber = function(i) {
 		this.state = parseInt(this.state);
 	}
 	if (typeof(this.state) === "number") {
+		if (this.state > 3999) {
+			throw new Error("There is no 4000 and beyond");
+		}
 		this.intValue = this.state;
 		this.stringValue = this.toRoman();
 	}
@@ -93,6 +96,8 @@ RomanNumber.prototype.toRoman = function() {
 	var reply = "";
 	anumber = parseInt(anumber);
 
+
+
 	while (anumber >= 1000) {
 		reply += "M";
 		anumber -= 1000;
@@ -150,7 +155,7 @@ RomanNumber.prototype.toRoman = function() {
 
 
 
-var number1 = new RomanNumber("mix");
+var number1 = new RomanNumber(3999);
 // var number2 = new RomanNumber("1986");
 
 console.log("Number 1 : ", number1.toString() + " = " + number1.toInt());
