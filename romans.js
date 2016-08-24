@@ -24,7 +24,7 @@ var fromRoman = function(astring) {
 	var abnormals = { "CM": 900, "CD": 400, "XC": 90, "XL": 40, "IX": 9, "IV": 4};
 	var normals = { "M": 1000,"D": 500, "C": 100, "L": 50, "X": 10, "V": 5, "I": 1};
 	var not_done = true;
-	var reply = "";
+	var reply = 0;
 
 	while (not_done) {
 		var dual_char, single_char;
