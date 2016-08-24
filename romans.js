@@ -95,68 +95,23 @@ RomanNumber.prototype.toRoman = function() {
 	var anumber = this.state;
 	var reply = "";
 	anumber = parseInt(anumber);
+	var numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+	var letters = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
 
+	for (var i = 0, l = numbers.length; i < l; i++) {
+		while (anumber >= numbers[i]) {
+			reply += letters[i];
+			anumber -= numbers[i];
+		}
+	}
 
-
-	while (anumber >= 1000) {
-		reply += "M";
-		anumber -= 1000;
-	}
-	while (anumber >= 900) {
-		reply += "CM";
-		anumber -= 900;
-	}
-	while (anumber >= 500) {
-		reply += "D";
-		anumber -= 500;
-	}
-	while (anumber >= 400) {
-		reply += "CD";
-		anumber -= 400;
-	}
-	while (anumber >= 100) {
-		reply += "C";
-		anumber -= 100;
-	}
-	while (anumber >= 90) {
-		reply += "XC";
-		anumber -= 90;
-	}
-	while (anumber >= 50) {
-		reply += "L";
-		anumber -= 50;
-	}
-	while (anumber >= 40) {
-		reply += "XL";
-		anumber -= 40;
-	}
-	while (anumber >= 10) {
-		reply += "X";
-		anumber -= 10;
-	}
-	while (anumber >= 9) {
-		reply += "IX";
-		anumber -= 9;
-	}
-	while (anumber >= 5) {
-		reply += "V";
-		anumber -= 5;
-	}
-	while (anumber >= 4) {
-		reply += "IV";
-		anumber -= 4;
-	}
-	while (anumber >= 1) {
-		reply += "I";
-		anumber -= 1;
-	}
 	return reply;
 };
 
 
 
-var number1 = new RomanNumber(0);
-// var number2 = new RomanNumber("1986");
+var number1 = new RomanNumber("MMIX");
+var number2 = new RomanNumber(1986);
 
 console.log("Number 1 : ", number1.toString() + " = " + number1.toInt());
-// console.log("Number 2 : ", number2.toString() + " = " + number2.toInt());
+console.log("Number 2 : ", number2.toString() + " = " + number2.toInt());
