@@ -5,7 +5,7 @@ var test = [null, '', 0, 1, 3, 4, 5, 'I', 'III', 'IIII', 'IV', 'V', 1968, '1473'
 
 test.map(function(value) {
 	try {
-	var r = new RomanNumber(value);	
+	var r = new RomanNumber(value);
 	} catch (e) {
 		console.log("Illegal value : ", value, e.message);
 	}
@@ -15,3 +15,17 @@ test.map(function(value) {
 		}
 	}
 })
+
+// check for if not done with new
+
+var r = new RomanNumber(1986);
+var rr = RomanNumber(1986);
+
+console.log("r : ", r.toString());
+console.log("rr : ", rr.toString());
+
+if (r.toString() === rr.toString()) {
+	console.log("they match");
+} else {
+	console.log("they do not match");
+}
