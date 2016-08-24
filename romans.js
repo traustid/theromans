@@ -1,4 +1,3 @@
-var readline = require("readline");
 
 /*
  M 1000
@@ -118,16 +117,3 @@ var fromNumber = function(anumber) {
 	return reply;
 };
 
-
-
-var rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout
-});
-
-
-rl.question("Enter a number : ", (answer) => {
-	var reply = fromRoman(answer);
-	console.log("reply : ", reply);
-	rl.close();
-});
