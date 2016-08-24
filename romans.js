@@ -29,6 +29,8 @@ var RomanNumber = function(i) {
 		});
 		this.intValue = this.toNumber();
 		this.stringValue = this.state;
+	} else {
+		this.state = parseInt(this.state);
 	}
 	if (typeof(this.state) === "number") {
 		this.intValue = this.state;
