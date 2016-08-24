@@ -1,7 +1,15 @@
 var readline = require("readline");
 
 var fromRoman = function(anumber) {
-	return anumber;
+	var reply = "";
+	anumber = parseInt(anumber);
+
+	while (anumber >= 1) {
+		reply += "I";
+		anumber--;
+	}
+
+	return reply;
 };
 
 
