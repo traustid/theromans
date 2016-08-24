@@ -15,7 +15,29 @@
  I 1
 */
 
-var fromRoman = function(astring) {
+var RomanNumber = function(i) {
+	this.state = i;
+
+	if (typeof(this.state) === "string") {
+		this.intValue = this.toNumber();
+		this.stringValue = this.state;
+	}
+	if (typeof(this.state) === "number") {
+		this.intValue = this.state;
+		this.stringValue = this.toRoman();
+	}
+};
+
+RomanNumber.prototype.toInt = function() {
+	return this.intValue;
+};
+
+RomanNumber.prototype.toString = function() {
+	return this.stringValue;
+};
+
+RomanNumber.prototype.toNumber = function() {
+	var astring = this.state;
 	if (typeof(astring) !== "string") {
 		return undefined;
 	}
@@ -54,10 +76,10 @@ var fromRoman = function(astring) {
 		}
 	}
 	return reply;
-
 };
 
-var fromNumber = function(anumber) {
+RomanNumber.prototype.toRoman = function() {
+	var anumber = this.state;
 	var reply = "";
 	anumber = parseInt(anumber);
 
@@ -113,7 +135,13 @@ var fromNumber = function(anumber) {
 		reply += "I";
 		anumber -= 1;
 	}
-
 	return reply;
 };
 
+
+
+var number1 = new RomanNumber("MIX");
+var number2 = new RomanNumber(1986);
+
+console.log("Number 1 : ", number1.toString() + " = " + number1.toInt());
+console.log("Number 2 : ", number2.toString() + " = " + number2.toInt());
