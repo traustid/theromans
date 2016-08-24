@@ -17,7 +17,7 @@ var readline = require("readline");
 */
 
 
-var fromRoman = function(anumber) {
+var fromNumber = function(anumber) {
 	var reply = "";
 	anumber = parseInt(anumber);
 
@@ -86,7 +86,7 @@ var rl = readline.createInterface({
 
 
 rl.question("Enter a number : ", (answer) => {
-	var reply = fromRoman(answer);
+	var reply = fromNumber(answer);
 	console.log("reply : ", reply);
 	rl.close();
 });
