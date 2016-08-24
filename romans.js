@@ -28,6 +28,7 @@ var fromRoman = function(astring) {
 
 	while (not_done) {
 		var dual_char, single_char;
+		var oldreply = reply;
 		if (work.length >= 2) {
 			dual_char = work[0]+work[1];
 		}
@@ -42,7 +43,15 @@ var fromRoman = function(astring) {
 		} else {
 			if (normals.hasOwnProperty(single_char)) {
 				reply += normals[single_char];
+				work.shift();
 			}
+		}
+
+		if (work.length === 0) {
+			not_done = false;
+		}
+		if (oldreply === reply) { // illegal characters, no increase
+			not_done = false;
 		}
 	}
 	return reply;
