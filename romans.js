@@ -16,9 +16,17 @@
 */
 
 var RomanNumber = function(i) {
+	var legal = "MDCXLXVI";
 	this.state = i;
 
 	if (typeof(this.state) === "string") {
+		this.state = this.state.toUpperCase();
+		var chars = this.state.split("");
+		chars.map(function(c) {
+			if (legal.indexOf(c) < 0) {
+				throw new Error("Not a valid roman numerical");
+			}
+		});
 		this.intValue = this.toNumber();
 		this.stringValue = this.state;
 	}
@@ -140,8 +148,8 @@ RomanNumber.prototype.toRoman = function() {
 
 
 
-var number1 = new RomanNumber("MIX");
-var number2 = new RomanNumber(1986);
+var number1 = new RomanNumber("mix");
+// var number2 = new RomanNumber("1986");
 
 console.log("Number 1 : ", number1.toString() + " = " + number1.toInt());
-console.log("Number 2 : ", number2.toString() + " = " + number2.toInt());
+// console.log("Number 2 : ", number2.toString() + " = " + number2.toInt());
