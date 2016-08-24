@@ -19,6 +19,7 @@ var RomanNumber = function(i) {
 	var legal = "MDCXLXVI";
 	this.state = i;
 
+
 	if (typeof(this.state) === "string") {
 		this.state = this.state.toUpperCase();
 		var chars = this.state.split("");
@@ -31,13 +32,17 @@ var RomanNumber = function(i) {
 		this.stringValue = this.state;
 	} else {
 		this.state = parseInt(this.state);
+		if (isNaN(this.state) || this.state === 0) {
+			throw new Error("Not a number");
+		}
 	}
 	if (typeof(this.state) === "number") {
-		if (this.state > 3999  || this.state < 1) {
-			throw new Error("Only allowed range 1-3999");
-		}
 		this.intValue = this.state;
 		this.stringValue = this.toRoman();
+	}
+
+	if (this.toInt() > 3999  || this.toInt() < 1) {
+		throw new Error("Only allowed range 1-3999");
 	}
 };
 
@@ -109,9 +114,17 @@ RomanNumber.prototype.toRoman = function() {
 };
 
 
+var test = [null, '', 0, 1, 3, 4, 5, 'I', 'III', 'IIII', 'IV', 'V', 1968, '1473', 2999, 3000, 10000, 'CDXXIX', 'CD1X', 'error', 'MCDLXXXII', 'MCMLXXX', 'MMMMCMXCIX', 'MMMMDMXCIX'];
 
-var number1 = new RomanNumber("MMIX");
-var number2 = new RomanNumber(1986);
-
-console.log("Number 1 : ", number1.toString() + " = " + number1.toInt());
-console.log("Number 2 : ", number2.toString() + " = " + number2.toInt());
+test.map(function(value) {
+	try {
+	var r = new RomanNumber(value);	
+	} catch (e) {
+		console.log("Illegal value : ", value, e.message);
+	}
+	finally {
+		if (r) {
+			console.log("Value : ", r.toString() + " = " + r.toInt());
+		}
+	}
+})
