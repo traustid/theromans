@@ -24,11 +24,28 @@ var fromRoman = function(astring) {
 	var abnormals = { "CM": 900, "CD": 400, "XC": 90, "XL": 40, "IX": 9, "IV": 4};
 	var normals = { "M": 1000,"D": 500, "C": 100, "L": 50, "X": 10, "V": 5, "I": 1};
 	var not_done = true;
+	var reply = "";
 
 	while (not_done) {
+		var dual_char, single_char;
+		if (work.length >= 2) {
+			dual_char = work[0]+work[1];
+		}
+		if (work.length >= 1) {
+			single_char = work[0];
+		}
 
+		if (abnormals.hasOwnProperty(dual_char)) {
+			reply += abnormals[dual_char];
+			work.shift();
+			work.shift();
+		} else {
+			if (normals.hasOwnProperty(single_char)) {
+				reply += normals[single_char];
+			}
+		}
 	}
-
+	return reply;
 
 };
 
@@ -101,7 +118,7 @@ var rl = readline.createInterface({
 
 
 rl.question("Enter a number : ", (answer) => {
-	var reply = fromNumber(answer);
+	var reply = fromRoman(answer);
 	console.log("reply : ", reply);
 	rl.close();
 });
